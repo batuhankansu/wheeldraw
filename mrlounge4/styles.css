@@ -1,0 +1,409 @@
+:root {
+    --primary-color: #ffd700;
+    --secondary-color: #ff4500;
+    --background-color: #1e1e2f;
+    --text-color: #ffffff;
+    --neon-color: #ff00ff;
+    --highlight-color: #ff6347;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background: 
+        linear-gradient(rgba(30, 30, 47, 0.9), rgba(0, 0, 0, 0.95)),
+        url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=2070') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Add animated light beams */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.1) 0%, transparent 50%);
+    animation: lightMove 20s infinite alternate;
+    pointer-events: none;
+}
+
+/* Add subtle particle effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"%3E%3C/circle%3E%3C/svg%3E');
+    animation: particleFloat 60s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes lightMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+.olympus-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px var(--primary-color), inset 0 0 50px rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-size: 3em;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    margin: 0;
+}
+
+.neon-sign {
+    font-size: 2em;
+    color: var(--neon-color);
+    text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+    animation: neon-flicker 1.5s infinite alternate;
+    margin-top: 10px;
+}
+
+.wheels-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.wheels-and-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    flex: 1;
+}
+
+.side-lists {
+    width: 250px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+    position: sticky;
+    top: 20px;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.side-lists .participants {
+    margin-bottom: 30px;
+}
+
+.side-lists .number-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.side-lists .number-list span {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.wheel-section {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.wheel-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 0%, rgba(255, 215, 0, 0.1) 50%, transparent 100%);
+    animation: shine 3s infinite;
+}
+
+.wheel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.wheel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--primary-color), inset 0 0 30px rgba(255, 215, 0, 0.5);
+    pointer-events: none;
+}
+
+/* Add light spots around the wheel */
+.wheel::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: 
+        radial-gradient(circle at 50% 0%, var(--primary-color) 0%, transparent 50%),
+        radial-gradient(circle at 100% 50%, var(--secondary-color) 0%, transparent 50%),
+        radial-gradient(circle at 50% 100%, var(--primary-color) 0%, transparent 50%),
+        radial-gradient(circle at 0% 50%, var(--secondary-color) 0%, transparent 50%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Spinning light effect class */
+.wheel.spinning::before {
+    animation: flashingLights 0.5s infinite;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+    z-index: 1;
+}
+
+.wheel-pointer-left {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 30px solid var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.wheel-pointer-right {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 30px solid var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--background-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: var(--highlight-color);
+    transform: scale(1.05);
+}
+
+.spin-button {
+    font-size: 1.5em;
+    padding: 15px 30px;
+    margin: 30px auto;
+    display: block;
+    background: linear-gradient(45deg, #ff4500, #ff6347);
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+.spin-button:hover {
+    background: linear-gradient(45deg, var(--highlight-color), var(--primary-color));
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.number-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.number-list span {
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.result-display {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(45deg, #2c1810, #4a2511);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color), inset 0 0 30px rgba(255, 215, 0, 0.3);
+    animation: glow 2s infinite alternate;
+    border-radius: 10px;
+    display: none;
+}
+
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 0.9;
+    }
+    20%, 22%, 24%, 55% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 69, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);
+    }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px var(--primary-color); }
+    100% { box-shadow: 0 0 40px var(--primary-color); }
+}
+
+/* Add spinning lights effect */
+@keyframes flashingLights {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+@media (max-width: 1200px) {
+    .wheels-container {
+        flex-direction: column;
+    }
+    
+    .side-lists {
+        width: 100%;
+        position: static;
+    }
+
+    .side-lists .number-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .wheels-and-inputs {
+        flex-direction: column;
+    }
+    
+    .wheel-section {
+        width: 100%;
+    }
+}
+
+/* Add a casino girl silhouette */
+.casino-decoration {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 200px;
+    height: 400px;
+    background: url('https://i.imgur.com/placeholder.png') no-repeat bottom right;
+    opacity: 0.2;
+    pointer-events: none;
+} 
